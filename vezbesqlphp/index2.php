@@ -8,9 +8,9 @@
 
 <body>
     <form action="vezba2.php" method="POST">
-        <input type="text" name="product_name" placeholder="Unesite product_name">
-        <input type="text" name="price" placeholder="Unesite price">
-        <input type="text" name="category" placeholder="Unesite category">
+        <input required type="text" name="product_name" placeholder="Unesite proizvod">
+        <input required type="text" name="price" placeholder="Unesite cenu">
+        <input required type="text" name="category" placeholder="Unesite kategoriju">
         <button>Registruj me</button>
     </form>
 </body>
