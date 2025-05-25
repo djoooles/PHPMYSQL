@@ -1,28 +1,20 @@
 <?php
 
-    $baza = mysqli_connect("localhost","root","","prvi_cas");
-    
-    if(mysqli_connect_error())
+    require_once "baza.php";
+
+    $rezultat = $baza->query("SELECT * FROM proizvodi ");
+    if($rezultat->num_rows > 0)
     {
-        die("Desila se greska prilikom konektovanja na bazu podataka");
+        echo "Ukupno smo pronasli proizvoda: " .$rezultat->num_rows;
+        $proizvodi = $rezultat->fetch_all(MYSQLI_ASSOC);
     }
-
-    $ime = "Mandarina1";
-    $opis = "sifra123451";
-    $cena = 11;
-    $datum_nabavke = "2024-05-03";
-    $kolicina = 6;
-
-
-    $baza->query("INSERT INTO proizvodi (ime,opis,cena,dan_nabavke,kolicina) VALUES ('$ime', '$opis', $cena, '$datum_nabavke', $kolicina) ");
-
-
-
-
-
-
-
-
+    else{
+        echo "Nismo nasli nijedan proizvod";
+    }
+    foreach($proizvodi as $proizvod)
+    {
+        echo " Jedan ".$proizvod['ime']." Cena mu je ". $proizvod['cena']." "."Na stanju ih imamo ukupno ". $proizvod['kolicina'];
+    }
 
 
 
