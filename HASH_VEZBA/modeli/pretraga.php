@@ -12,11 +12,11 @@
 
     $email = $_GET['email'];
 
-    $rezultat = $baza->query("SELECT * FROM upiszadomaci WHERE email = '$email' ");
+    $rezultat = $baza->query("SELECT * FROM upiszadomaci WHERE email LIKE '%$email%' ");
     if($rezultat ->num_rows >= 1)
 
     {
-        die("Nasli smo korisnika sa tim emailom");
+        echo "Nasli smo ".$rezultat->num_rows." korisnika sa tom email adresom";
     }
     else
     {
