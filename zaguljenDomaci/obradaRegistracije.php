@@ -1,7 +1,4 @@
 <?php
-$email = $_POST['email'];
-$sifra = password_hash($_POST['sifra'],PASSWORD_BCRYPT);
-
 if(! isset($_POST['email']) || empty($_POST['email']))
 {
     die("Niste uneli Email");
@@ -11,6 +8,9 @@ if(! isset($_POST['sifra']) || empty($_POST['sifra']))
     die("Niste uneli Sifru");
 }
 require_once "baza.php";
+$email = $_POST['email'];
+$sifra = password_hash($_POST['sifra'],PASSWORD_BCRYPT);
+
 
 $rezultat = $baza->query("SELECT * FROM korisnici WHERE email = '$email' ");
 
@@ -22,7 +22,7 @@ if($rezultat->num_rows == 0)
 }
 else
 {
-    echo"Email sa je vec registrovan, Ulogujte se!";
+    echo"Korisnik ".$email." je vec registrovan, Ulogujte se!";
 }
 
 ?>

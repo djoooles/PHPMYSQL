@@ -12,6 +12,10 @@
             <input required type="email" name="email" placeholder="Unesite Email">
             <input required type="password" name="sifra" placeholder="Unesite Sifru">
             <button type="submit">Registruj Me</button>
+            <p>Vec imate nalog?</p>
+            <p>Kikni ovde za Login</p>
+            <a href="login.php">Login</a>
+
         </form>        
     </body>
     

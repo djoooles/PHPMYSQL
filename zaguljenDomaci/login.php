@@ -6,8 +6,7 @@
         <title>Document</title>
     </head>
     <body>
-        <p>Uspesno ste registrovali vas nalog</p>
-        <p>Ulogujte se</p>
+        <p>Ulogujte se na vas nalog</p>
         <form action="obradaLogina.php" method="post">
             <input type="email" name="email" placeholder="Unesite Email">
             <input type="password" name="sifra" placeholder="Unesite Sifru">
