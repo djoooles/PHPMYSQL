@@ -16,12 +16,18 @@ $provera = $baza->query("SELECT * FROM korisnici WHERE email = '$email' LIMIT 1"
 if($provera && $provera->num_rows > 0) {
     $korisnik = $provera->fetch_assoc();
     
-    if(password_verify($sifra, $korisnik['sifra'])) {
-        session_start();
-        $_SESSION['korisnik_id'] = $korisnik['id'];
+    $verifikovanaSifra = password_verify($sifra, $korisnik['sifra']);
+    if($verifikovanaSifra == true)
+    {   if(session_status() == PHP_SESSION_NONE)
+        {
+            session_start();
+        }
+        $_SESSION['ulogovan'] = true;
+        $_SESSION['user_id'] = $korisnik['id'];
+        
         header("Location: profil.php");
-        exit();
-    } else {
+    }
+    else {
         die("Pogrešna šifra! Pokušajte ponovo.");
     }
 } else {
