@@ -4,6 +4,11 @@
         $rezultat = $baza->query("SELECT * FROM proizvodi");
 
         $proizvodi = $rezultat->fetch_all(MYSQLI_ASSOC);
+
+        if(session_status() == PHP_SESSION_NONE)
+        {
+            session_start();
+        }
     ?>
     <!DOCTYPE html>
 
@@ -25,6 +30,16 @@
             <input type="text" name="kolicina" placeholder="Unesite Kolicinu Proizvoda">
             <button>Dodaj Proizvod</button>
         </form>
+            <div>
+                <a href="profil.php">Glavna</a>
+
+                <?php if(isset($_SESSION['ulogovan'])): ?>
+                    <a href="logout.php">Logout</a>
+                    <?php else: ?>
+                <a href="login.php">Login</a>
+                <?php header("Location: login.php") //Hteo sam da dodam ako se klikne na logout da Ne ostanemo na istoj stranici nego da nas vrati na login ?>
+                <?php endif; ?>
+            </div>
 
             <?php foreach($proizvodi as $proizvod):?> 
             <div>
